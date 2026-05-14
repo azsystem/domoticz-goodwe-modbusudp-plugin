@@ -263,8 +263,6 @@ class BasePlugin:
         self.maxPwr = 3000
         self.shortlist = True
         
-        Domoticz.Log("Shortlist: " + str(self.shortlist))
-        
         # GoodWe inverters are likely to completely shutdown when the sun is gone. They will become unavailable after that.
         # We would like to retry to connect every now and then. lastconnectfailuretime holds the last known time when the connection was lost.
         # retrydelay (in msec) is the time we wait before retrying to connect to the inverter.
@@ -368,7 +366,10 @@ class BasePlugin:
                                         prepend = Devices[unit[Column.PREPEND_IDNUM]].sValue
                                         sValue = unit[Column.FORMAT].format(prepend, value)
                                     else:
-                                        sValue = unit[Column.FORMAT].format(value)
+                                        try:
+                                            sValue = unit[Column.FORMAT].format(value)
+                                        except:
+                                            pass
                                     Domoticz.Debug("Update value = {}".format(sValue))
 
                                     # Store the value when changed.
@@ -513,8 +514,10 @@ def onStart():
 
 def onHeartbeat():
     global _plugin
-    _plugin.onHeartbeat()
-
+    try:
+        _plugin.onHeartbeat()
+    except:
+        pass
 def onCommand(Unit, Command, Level, Hue):
     global _plugin
     _plugin.onCommand(Unit, Command, Level, Hue)
