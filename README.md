@@ -15,6 +15,8 @@ The plugin uses a goodwe library from https://pypi.org/project/goodwe/ (https://
 ## Requirements
 For XS inverter is firmware 1.xx.14 or higher required. Other GoodWe inverter model series (ET, EH, BT, BH, ES, EM, BP, DT, MS, NS) might work as well. This software is currently in a beta stage.
 
+First try adjusting the Power Limit using the SolarGo app. If that doesn't work, your firmware is probably too old.
+Request a firmware update: https://goodwetechnology.zendesk.com/hc/en-gb/requests/new
 
 ## Download and install requirements:
 
