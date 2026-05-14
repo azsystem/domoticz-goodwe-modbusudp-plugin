@@ -20,36 +20,37 @@ For XS inverter is firmware 1.xx.14 or higher required. Other GoodWe inverter mo
 
 
 ### Linux
+Prepare Domoticz for Virtual Environment:
+
+``` shell
+cd
+mkdir domoticz_venv
+sudo nano /etc/init.d/domoticz.sh
+
+* Note: look for the following line:
+export PYTHONPATH=/home/pi/domoticz_venv:$PYTHONPATH
+
+sudo systemctl daemon-reload
+sudo service domoticz restart
+```
+
 Install the Goodwe Modbus UDP plugin:
 
 ``` shell
 cd domoticz/plugins
-git clone https://github.com/remco-k/domoticz-goodwe-modbusudp-plugin.git
+git clone https://github.com/azsystem/domoticz-goodwe-modbusudp-plugin.git
 ```
 * Note: Some Domoticz installation have other plugin paths (such as `domoticz/userdata/plugins`).
 
 Install required dependencies:
 ``` shell
+cd
 cd domoticz/plugins/domoticz-goodwe-modbusudp-plugin
-sudo pip3 install -r requirements.txt
+python3 -m pip install -r requirements.txt --upgrade -t /home/pi/domoticz_venv
 ```
 
 ### Windows
-Install the Goodwe Modbus UDP plugin:
-
-``` shell
-cd domoticz/plugins
-git clone https://github.com/remco-k/domoticz-goodwe-modbusudp-plugin.git
-```
-* Note: Some Domoticz installation have other plugin paths (such as `domoticz/userdata/plugins`).
-* Note: You must create the `plugins` path.
-
-Install required dependencies by starting a command prompt with administrator rights:
-``` shell
-cd domoticz/plugins/domoticz-goodwe-modbusudp-plugin
-"C:\Program Files (x86)\Python310-32\python.exe" -m pip install -r requirements.txt
-```
-* Note: Replace the path `C:\Program Files (x86)\Python310-32\` with the path where you have installed 32-bit Python.
+not supported by azsystem
 
 ## After installation
 Restart your Domoticz, and add the hardware via Setup->Hardware and select Type: "GoodWe ModbusUDP", enter a name and IP address and optionally select the inverter family for a faster connection time. Set the interval to your needs and then press the "Add" button.
