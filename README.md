@@ -11,6 +11,7 @@ The plugin uses a goodwe library from https://pypi.org/project/goodwe/ (https://
 * Reset power sensors to 0 if state is wait mode
 * Auto detects the inverter family
 * Setting the inverter family manually speeds up the connection time
+* Change output limit from 10-100% (NS Only)
 
 ## Requirements
 For XS inverter is firmware 1.xx.14 or higher required. Other GoodWe inverter model series (ET, EH, BT, BH, ES, EM, BP, DT, MS, NS) might work as well. This software is currently in a beta stage.
