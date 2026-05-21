@@ -50,6 +50,8 @@ Install required dependencies:
 cd
 cd domoticz/plugins/domoticz-goodwe-modbusudp-plugin
 python3 -m pip install -r requirements.txt --upgrade -t /home/pi/domoticz_venv
+
+sudo service domoticz restart
 ```
 
 ### Windows
